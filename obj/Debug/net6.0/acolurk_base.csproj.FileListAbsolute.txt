@@ -145,3 +145,4 @@ C:\Users\blame\coding\puck_mod\plugin_projects\acolurk_base\obj\Debug\net6.0\net
 C:\Users\blame\coding\puck_mod\plugin_projects\acolurk_base\obj\Debug\net6.0\refint\net.blamedlurker.puckmods.acolurk_base.dll
 C:\Users\blame\coding\puck_mod\plugin_projects\acolurk_base\obj\Debug\net6.0\net.blamedlurker.puckmods.acolurk_base.pdb
 C:\Users\blame\coding\puck_mod\plugin_projects\acolurk_base\obj\Debug\net6.0\ref\net.blamedlurker.puckmods.acolurk_base.dll
+C:\Users\blame\coding\puck_mod\plugin_projects\acolurk_base\obj\Debug\net6.0\acolurk_base.sourcelink.json
