@@ -26,6 +26,7 @@ public class Plugin : BasePlugin
         privateCommands.LoadPrivateCommands();
         warmupCommands.LoadWarmupCommands();
         vanillaCommands.LoadVanillaCommands();
+        adminCommands.LoadAdminCommands();
         string logCmnds = "The following commands are loaded: ";
         foreach (Command command in Command.commands) {
             logCmnds += command.names[0] + ", ";

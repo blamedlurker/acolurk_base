@@ -58,14 +58,7 @@ public class vanillaCommands
         new List<Type> {typeof(string)},
         (args, chat, clientId) =>
         {
-            PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
-            Player player = plm.GetPlayerByClientId(clientId);
-            VoteManager vm = NetworkBehaviourSingleton<VoteManager>.instance;
-            if (vm.Server_IsVoteStarted(VoteType.Kick)) vm.Server_SubmitVote(VoteType.Kick, player);
-            else
-            {
-                vm.Server_CreateVote(VoteType.Kick, plm.players.Count / 2 + 1, player);
-            }
+            throw new Exception("This should not be called");
         });
     
     /*

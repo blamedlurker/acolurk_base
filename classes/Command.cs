@@ -42,4 +42,10 @@ public class Command
         if (this.tags.Contains("playing")) return (gm.Phase == GamePhase.Playing);
         return true;
     }
+    public bool CheckPermissions(ulong clientId)
+    {
+        ServerManager sm = NetworkBehaviourSingleton<ServerManager>.instance;
+        PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
+        return (sm.AdminSteamIds.Contains(plm.GetPlayerByClientId(clientId).SteamId.Value.ToString()) || !this.tags.Contains("admin")); // if tagged admin, check permissions
+    }
 }

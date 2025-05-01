@@ -26,8 +26,9 @@ public static class CommandHelper
         {
             if (command.names.Contains(argsList[0].ToLower()))
             {
+                if (command.tags.Contains("vanilla")) return true;
                 argsList.RemoveAt(0);
-                if (command.CheckPhase()) command.CallCommand(argsList, chat, clientId);
+                if (command.CheckPhase() && command.CheckPermissions(clientId)) command.CallCommand(argsList, chat, clientId);
                 // string logMessage2 = $"{command.names[0]} was called with the following arguments:\n";
                 // foreach (string arg in argsList) logMessage2 += $"{arg}\n";
                 // Plugin.Log.LogInfo(logMessage2);
