@@ -14,6 +14,7 @@ public class privateCommands
         dummy.Register();
         list.Register();
         timeAndDate.Register();
+        banan.Register();
         Plugin.Log.LogInfo($"Private commands loaded!");
     }
 
@@ -75,6 +76,23 @@ public class privateCommands
         {
             string message = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             chat.Server_SendSystemChatMessage(message, clientId);
+        });
+    
+    public static Command banan = new Command(
+        new List<string> {"banan", "banana"}, 
+        "Declares someone as a banana.",
+        new List<string> {"private"}, 
+        new List<string> {"player"},
+        new List<Type> {typeof(string)},
+        (args, chat, clientId) =>
+        {
+            if (args.Count == 0)
+            {
+                chat.Server_SendSystemChatMessage("Please specify a player name!", clientId);
+                return;
+            }
+            string player = args[0];
+            chat.Server_SendSystemChatMessage($"<b>{player}</b> is a banan!", clientId);
         });
     
     /*
