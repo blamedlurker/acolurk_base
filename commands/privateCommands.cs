@@ -92,7 +92,7 @@ public class privateCommands
                 return;
             }
             string player = args[0];
-            chat.Server_SendSystemChatMessage($"<b>{player}</b> is a banan!", clientId);
+            chat.Server_SendSystemChatMessage($"<b>{player}</b> is a banan!");
         });
     
     /*
