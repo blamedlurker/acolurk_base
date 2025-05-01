@@ -33,4 +33,13 @@ public class Command
     {
         OnCommandCall?.Invoke(args, chat, clientId);
     }
+
+    public bool CheckPhase()
+    {
+        GameManager gm = NetworkBehaviourSingleton<GameManager>.instance;
+        
+        if (this.tags.Contains("warmup")) return (gm.Phase == GamePhase.Warmup);
+        if (this.tags.Contains("playing")) return (gm.Phase == GamePhase.Playing);
+        return true;
+    }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using acolurk_base.classes;
 using acolurk_base.helpers;
+using UnityEngine;
 
 namespace acolurk_base.commands;
 
@@ -11,22 +12,20 @@ public class privateCommands
     {
         help.Register();
         dummy.Register();
+        list.Register();
+        timeAndDate.Register();
         Plugin.Log.LogInfo($"Private commands loaded!");
     }
 
-    public static Command help = new Command(
-        new List<string> { "help", "h", "man", "halp" },
-        "The help command, which provides a means of accessing internal command descriptions and arguments.",
-        new List<string> { "private" },
-        new List<string> { "command" },
-        new List<Type> { typeof(string) },
+    public static Command help = new Command(new List<string> { "help", "h", "man", "halp" },
+        "The help command, which provides a means of accessing internal command descriptions and arguments. Use <i>/list</i> for a list of all commands.",
+        new List<string> { "private" }, new List<string> { "command" }, new List<Type> { typeof(string) },
         (args, chat, clientId) =>
         {
             string result = "";
             if (args.Count == 0) args.Add("help");
             foreach (string inputCom in args)
             {
-
                 foreach (Command command in Command.commands)
                 {
                     if (command.names.Contains(inputCom.ToLower()))
@@ -37,6 +36,9 @@ public class privateCommands
                         {
                             result += $"<b>{command.argNames[i]}</b> <i>{command.argTypes[i].Name}</i> ";
                         }
+
+                        result += "<br>Aliases: ";
+                        foreach (string alias in command.names) result += $"<i>{alias}</i> ";
                         break;
                     }
                 }
@@ -45,14 +47,43 @@ public class privateCommands
             chat.Server_SendSystemChatMessage(result, clientId);
         });
 
-    public static Command dummy = new Command(
-        new List<string> {"dummy"},
-        "A dummy command for testing purposes",
-        new List<string> { "dummy", "private" },
-        new List<string> {"arg1", "arg2"},
+    public static Command dummy = new Command(new List<string> { "dummy" }, "A dummy command for testing purposes.",
+        new List<string> { "dummy", "private" }, new List<string> { "arg1", "arg2" },
         new List<Type> { typeof(string), typeof(int) },
+        (args, chat, clientId) => { chat.Server_SendSystemChatMessage("Dummy command received!", clientId); });
+    
+    public static Command list = new Command(
+        new List<string> {"list", "listcommands", "l", "listall"}, 
+        "A command to list all currently loaded commands.",
+        new List<string> {"private"}, 
+        new List<string> {},
+        new List<Type> {},
         (args, chat, clientId) =>
         {
-            chat.Server_SendSystemChatMessage("Dummy command received!", clientId);
+            string result = "";
+            foreach (Command command in Command.commands) result += $"<i>{command.names[0]}</i> ";
+            chat.Server_SendSystemChatMessage(result, clientId);
         });
+    
+    public static Command timeAndDate = new Command(
+        new List<string> {"time", "date", "clock"}, 
+        "Sends the player the time and date in UTC.",
+        new List<string> {"private"}, 
+        new List<string>(),
+        new List<Type>(),
+        (args, chat, clientId) =>
+        {
+            string message = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            chat.Server_SendSystemChatMessage(message, clientId);
+        });
+    
+    /*
+    public static Command n = new Command(
+        new List<string> {}, 
+        "",
+        new List<string> {}, 
+        new List<string> {},
+        new List<Type> {},
+        (args, chat, clientId) => { });
+        */
 }

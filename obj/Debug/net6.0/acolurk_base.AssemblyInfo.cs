@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("the base mod for blamedlurker\'s server mods")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+e3bfd81d8a3ef23e0947289f361533aa3671d0e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+b4453a9d190ed549a5d0263620e684a15319c750")]
 [assembly: System.Reflection.AssemblyProductAttribute("acolurk base mod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("net.blamedlurker.puckmods.acolurk_base")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.0")]

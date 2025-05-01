@@ -13,7 +13,7 @@ public class UIChatPatch
             ulong clientId, bool useTeamChat, bool isMuted)
         {
             // catch teamchat/mutes
-            if (useTeamChat || isMuted) return true;
+            if (useTeamChat/* || isMuted*/) return true;
            
             // is it a command?
             if (!message.StartsWith('/')) return true;
