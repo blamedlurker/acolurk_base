@@ -8,14 +8,13 @@ namespace acolurk_base.commands;
 
 public class warmupCommands
 {
-    static PuckManager pm = NetworkBehaviourSingleton<PuckManager>.instance;
-    static PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
     public static void LoadWarmupCommands()
     {
         spawnPuck.Register();
         emptyPucks.Register();
         launcherCntrl.Register();
         Plugin.Log.LogInfo("Warmup commands loaded!");
+
     }
 
     public static Command spawnPuck = new(new List<string>
@@ -46,6 +45,9 @@ public class warmupCommands
             chat,
             clientId) =>
         {
+            PuckManager pm = NetworkBehaviourSingleton<PuckManager>.instance;
+            PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
+            
             var player = plm.GetPlayerByClientId(clientId);
             var color = player.Team.Value.ToString()
                 .ToLower();
@@ -105,6 +107,9 @@ public class warmupCommands
             chat,
             clientId) =>
         {
+            PuckManager pm = NetworkBehaviourSingleton<PuckManager>.instance;
+            PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
+            
             var player = plm.GetPlayerByClientId(clientId);
             var color = player.Team.Value.ToString()
                 .ToLower();
@@ -137,6 +142,9 @@ public class warmupCommands
             chat,
             clientId) =>
         {
+            PuckManager pm = NetworkBehaviourSingleton<PuckManager>.instance;
+            PlayerManager plm = NetworkBehaviourSingleton<PlayerManager>.instance;
+            
             var player = plm.GetPlayerByClientId(clientId);
             var myLauncher = ServerManagerPatch.ServerPL;
             switch (args[0])
