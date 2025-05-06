@@ -1,4 +1,5 @@
-﻿using acolurk_base.helpers;
+﻿using acolurk_base.classes;
+using acolurk_base.helpers;
 using HarmonyLib;
 
 namespace acolurk_base.patches;
@@ -12,6 +13,7 @@ public class PhysicsPatch
         public static void Postfix(PhysicsManager __instance)
         {
             serverUtils.CheckPuckAmount(50);
+            ServerManagerPatch.ServerPL.Update();
         }
     }
 }
